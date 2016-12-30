@@ -1,4 +1,3 @@
-Snap.path.getPointAtLength(path, length)## snap.svg.js
 # Snap
 ### 1. `Snap(...)`
 > 创建一个面或包裹已经存在SVG元素，并返回`Element`对象
@@ -646,6 +645,7 @@ Snap.path.getPointAtLength(path, length)## snap.svg.js
 - 返回值
 
 	是否移除 布尔值
+
 ----------
 # Matrix
 
@@ -1208,7 +1208,8 @@ Snap.path.getPointAtLength(path, length)## snap.svg.js
 
 ### 1. `Fragment.select()`
 > 参考 `Element.select()`
-> 
+
+
 ### 2. `Fragment.selectall()`
 > 参考 `Element.selectall()`	
 
@@ -1252,6 +1253,12 @@ Snap.path.getPointAtLength(path, length)## snap.svg.js
 		    r: 10
 		});
 
+
+		// 创建超链接
+		var a = paper.el("a",{
+			"xlink:href":"https://google.com"
+		})
+		a.add(c) 
 
 ### 2. `Paper.rect(x, y, width, height, [rx], [ry])`
 > 绘制矩形
@@ -1563,12 +1570,12 @@ Snap.path.getPointAtLength(path, length)## snap.svg.js
 
 - 参数
 	
-	`a`  
+	`a`    
 	`B`  
-	`b`
-	`B`
-	`get`
-	`set`  
+	`b`    
+	`B`  
+	`get`  
+	`set`    
 	`easing` 缓动函数 默认：`mina.linear`
 
 - 返回值
