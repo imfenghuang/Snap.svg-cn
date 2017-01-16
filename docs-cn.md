@@ -823,8 +823,6 @@
 	`element` 元素 对集合中指定的元素应用指定的属性
 	`eattr` 字符串 attribute on the element to bind the attribute to
 
-### todo
-
 - 返回值
 	
 	集合对象 对象	
@@ -1858,8 +1856,30 @@
 - 参数
 
 	`pathString` 字符串 `SVG`格式的路径字符串
+	
+	- 路径字符串由单字符命令组成，如：
+		
+			"M10,20L30,40" 
+	
+		上述命令使用了两个命令，`M` 和 `L`，其中 `M` 带参数 `(10, 20)`， `L` 带参数 `(30, 40)`。命令字符大写，表示使用的是绝对坐标，命令字符小写，则表示使用的是相对坐标。上述命令表示：画笔移动到 `(10, 20)`，画一条直线到 `(30, 40)`。
+		
+		具体命令如下，详情可参考 [SVG path string format](http://www.w3.org/TR/SVG/paths.html#PathData" "SVG path string format") 或者 [article about path strings at MDN](https://developer.mozilla.org/en/SVG/Tutorial/Paths "article about path strings at MDN")：
+		
+			M 画笔移动到给定坐标 x y
+			Z 关闭路径
+			L 绘制一条到给定坐标的线 x y
+			H 绘制一条水平线到给定的坐标 x
+			V 绘制一条竖线到给定的坐标 y
+			C 绘制一条从当前点到(x, y) 的三次贝塞尔曲线，(x1, y1) 为曲线的开始控制点，(x2, y2) 为曲线的终点控制点 x1 y1 x2 y2
+			S 绘制一条从当前点到(x, y) 的三次贝塞尔曲线，使用(x2, y2) 作为新端点的控制点。第一个控制点是前一个C 命令的终点控制点的中心对称点。如果前一个曲线不存在，当前点会被用作第一个控制点 x2 y2 x y
+			Q 绘制一条从当前点到(x, y)，控制点为(x1, y1) 的二次贝塞尔曲线 x1 y1 x y
+			T 绘制一条从当前点到(x, y) 的二次贝塞尔曲线。控制点是前一个 Q 命令的控制点的中心对称点。如果没有前一条曲线，当前点会被用作控制点 x y
+			A 绘制一个从当前点到(x,y) 的椭圆弧。椭圆上的 x 半径为 rx，y 半径为 ry。椭圆旋转 ry x-axis-rotation 度。如果圆弧小于 180 度，则 large-arc 为 0；如果大于 180 度，则 large-arc 为1。如果圆弧按顺时针方向绘制，则 sweep 为 1，否则为 0 rx ry x-axis-rotation large-arc-flag sweep-flag x y
+			R Catmull-Rom curveto x1 y1 x y
+		
+		- 注意 [Catmull-Rom curveto](http://en.wikipedia.org/wiki/Catmull%E2%80%93Rom_spline#Catmull.E2.80.93Rom_spline "Catmull-Rom curveto") 是***非标准的*** SVG 命令，但是，它将使操作更加简单。
+		- 特例：当路径字符串只包含了三个命令： `M10, 10R...Z`。在这个例子中，路径连接后将自动回到它的起始点。
 
-# 补充Todo
 
 - 用法
 		
